@@ -29,7 +29,7 @@ def isPrime(num):
     if num > 2 and (num % 2 == 0):
         return False
 
-    for i in range(2, int(math.sqrt(num)) + 1):
+    for i in range(3, int(math.sqrt(num)) + 1, 2):
         if num % i == 0:
             return False
     return True
