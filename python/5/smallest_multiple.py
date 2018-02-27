@@ -1,13 +1,18 @@
+from collections import Counter
 
+factors = []
 
-def check_even_divisible(x):
-    for i in range(1, 20):
-        if x % i != 0:
-            return False
-    return True
+def factor(x):
+    d = 2
+    local_factors = []
+    while(x > 1):
+        while(x % d == 0):
+            local_factors.append(d)
+            x /= d
+        d += 1
+    return local_factors
 
-multiple = 1
+for i in range(21):
+    factors += list((Counter(factor(i))-Counter(factors)).elements())
 
-while not check_even_divisible(multiple):
-    multiple += 1
-print multiple
+print reduce(lambda x, y: x*y, factors)
